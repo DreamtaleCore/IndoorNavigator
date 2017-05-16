@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">IndoorNavigator</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="accelerate_history_hint">Accelerate sensor history information will be shown here.</string>
+    <string name="accelerate_X">X:</string>
+    <string name="accelerate_Y">Y:</string>
+    <string name="accelerate_Z">Z:</string>
+    <string name="magnetic_history_hint">Magnetic sensor history information will be shown here</string>
+    <string name="accelerate_data_x">accelerate data x</string>
+    <string name="accelerate_data_y">accelerate data y</string>
+    <string name="accelerate_data_z">accelerate data z</string>
+    <string name="magnetic_X">X:</string>
+    <string name="magnetic_Y">Y:</string>
+    <string name="magnetic_Z">Z:</string>
+    <string name="magnetic_data_x">rotate data x</string>
+    <string name="magnetic_data_y">rotate data y</string>
+    <string name="magnetic_data_z">rotate data z</string>
+    <string name="action_reset">Reset</string>
+</resources>

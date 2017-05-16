@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_slideshow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dreamtale.indoornavigator.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlSlideshowMain">
+        <com.example.dreamtale.indoornavigator.ImgProcLayer.MyViewFlipper
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:id="@+id/vfSlideshowImage">
+
+        </com.example.dreamtale.indoornavigator.ImgProcLayer.MyViewFlipper>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/tvSlideshowImageInfo"
+            android:hint="State picture information here"
+            android:layout_below="@+id/vfSlideshowImage"/>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

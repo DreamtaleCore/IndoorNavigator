@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_manage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dreamtale.indoornavigator.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fixed Height (Unit: m): "
+            android:textSize="15dp"
+            android:textColor="#FF008888"
+            android:layout_marginLeft="10dp"
+            android:enabled="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/llHeightAdjust">
+            <SeekBar
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/sbHeightAdjust"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="0dp"
+                android:hint="value"
+                android:id="@+id/tvHeightAdjusted"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Compensate Rate (%): "
+            android:textSize="15dp"
+            android:textColor="#FF008888"
+            android:layout_marginLeft="10dp"
+            android:enabled="false"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/llLeftRateAdjust">
+            <SeekBar
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/sbLeftRateAdjust"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="0dp"
+                android:hint="value"
+                android:id="@+id/tvLeftRateAdjusted"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pose Precision (Unit: s): "
+            android:textSize="15dp"
+            android:textColor="#FF008888"
+            android:layout_marginLeft="10dp"
+            android:enabled="false"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/llPosePrecisionAdjust">
+            <SeekBar
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/sbPosePrecisionAdjust"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="0dp"
+                android:hint="value"
+                android:id="@+id/tvPosePrecisionAdjusted"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judder Threshold (Unit: m): "
+            android:textSize="15dp"
+            android:textColor="#FF008888"
+            android:layout_marginLeft="10dp"
+            android:enabled="false"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/llJudderThresholdAdjust">
+            <SeekBar
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/sbJudderThresholdAdjust"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="0dp"
+                android:hint="value"
+                android:id="@+id/tvJudderThresholdAdjusted"/>
+        </LinearLayout>
+
+        <CheckBox
+            android:text="Use default value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:id="@+id/cbDefaultSwitch" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

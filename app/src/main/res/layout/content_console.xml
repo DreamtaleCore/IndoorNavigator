@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dreamtale.indoornavigator.MainActivity"
+    android:id="@+id/content_console">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:text="Accelerate vector:"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X: "
+            android:layout_row="1"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y: "
+            android:layout_row="2"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z: "
+            android:layout_row="3"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="x data here"
+            android:id="@+id/tvAccX"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="y data here"
+            android:id="@+id/tvAccY"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="z data here"
+            android:id="@+id/tvAccZ"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:text="Velocity vector:"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_columnSpan="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X: "
+            android:layout_row="5"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y: "
+            android:layout_row="6"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z: "
+            android:layout_row="7"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="x data here"
+            android:id="@+id/tvVelX"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="y data here"
+            android:id="@+id/tvVelY"
+            android:layout_row="6"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="z data here"
+            android:id="@+id/tvVelZ"
+            android:layout_row="7"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:text="Path vector:"
+            android:layout_row="8"
+            android:layout_column="0"
+            android:layout_columnSpan="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X: "
+            android:layout_row="9"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y: "
+            android:layout_row="10"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z: "
+            android:layout_row="11"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="x data here"
+            android:id="@+id/tvPathX"
+            android:layout_row="9"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="y data here"
+            android:id="@+id/tvPathY"
+            android:layout_row="10"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="z data here"
+            android:id="@+id/tvPathZ"
+            android:layout_row="11"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:text="Pose:"
+            android:layout_row="12"
+            android:layout_column="0"
+            android:layout_columnSpan="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roll: "
+            android:layout_row="13"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pitch: "
+            android:layout_row="14"
+            android:layout_column="0"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yaw: "
+            android:layout_row="15"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="roll data here"
+            android:id="@+id/tvRoll"
+            android:layout_row="13"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="pitch data here"
+            android:id="@+id/tvPitch"
+            android:layout_row="14"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="yaw data here"
+            android:id="@+id/tvYaw"
+            android:layout_row="15"
+            android:layout_column="1"
+            android:layout_columnSpan="2"/>
+
+    </GridLayout>
+</RelativeLayout>
