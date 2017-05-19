@@ -74,7 +74,7 @@ public class MyRenderer implements GLSurfaceView.Renderer {
             mWorld.setAmbientLight(50, 50, 50);
 
             // Originally, the mCreator only contains a XY-plane & Z-axis
-            mCreator = Primitives.getCube(200);
+            mCreator = Primitives.getCube(400);
             mCreator.setAdditionalColor(20, 20, 20);
             mCreator.setTransparency(2);
             mCreator.strip();
@@ -82,7 +82,7 @@ public class MyRenderer implements GLSurfaceView.Renderer {
 
             // Step 1: add the XY-plane
             mCoordinate = Primitives.getPlane(1, 400);
-            mCoordinate.setAdditionalColor(120, 120, 120);
+            mCoordinate.setAdditionalColor(200, 200, 200);
             mCoordinate.setOrigin(new SimpleVector(0, 0, 0));
             mCoordinate.setTransparency(2);
             mCoordinate.setTexture("indoor map");
@@ -110,7 +110,7 @@ public class MyRenderer implements GLSurfaceView.Renderer {
 
             mSun = new Light(mWorld);
             mSunBack = new Light(mWorld);
-            mSun.setIntensity(50, 50, 50);
+            mSun.setIntensity(200, 200, 200);
             mSunBack.setIntensity(50, 50, 50);
             SimpleVector sv = new SimpleVector();
             sv.set(mCreator.getTransformedCenter());

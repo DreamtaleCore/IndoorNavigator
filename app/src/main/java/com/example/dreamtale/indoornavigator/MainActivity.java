@@ -1888,17 +1888,16 @@ public class MainActivity extends AppCompatActivity
 
     // </editor-fold>
 
-    // <editor-fold desc="Data Visible">
+    // <editor-fold desc="Data Visible BLOCK">
     void generateTexture() {
         Texture texture = new Texture(BitmapHelper.rescale(
                 BitmapHelper.convert(getDrawable(
-                        R.drawable.center_building_map)), 1024, 1024));
+                        R.drawable.center_building_map_2_gen)), 1024, 1024));
 
         TextureManager.getInstance().addTexture("indoor map", texture);
     }
 
     // </editor-fold>
-
 
     // <editor-fold desc="Test cpp BLOCK">
 
