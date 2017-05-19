@@ -3,7 +3,10 @@ package com.example.dreamtale.indoornavigator.PaintLayer;
 import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 
+import com.example.dreamtale.indoornavigator.MainActivity;
+import com.example.dreamtale.indoornavigator.R;
 import com.threed.jpct.Camera;
 import com.threed.jpct.FrameBuffer;
 import com.threed.jpct.Interact2D;
@@ -13,7 +16,10 @@ import com.threed.jpct.Polyline;
 import com.threed.jpct.Primitives;
 import com.threed.jpct.RGBColor;
 import com.threed.jpct.SimpleVector;
+import com.threed.jpct.Texture;
+import com.threed.jpct.TextureManager;
 import com.threed.jpct.World;
+import com.threed.jpct.util.BitmapHelper;
 import com.threed.jpct.util.MemoryHelper;
 
 import org.opencv.core.Point3;
@@ -62,59 +68,62 @@ public class MyRenderer implements GLSurfaceView.Renderer {
             mFrameBuffer.dispose();
         }
         mFrameBuffer = new FrameBuffer(gl, width, height);
-        mWorld = new World();
-        mWorld.setAmbientLight(50, 50, 50);
 
-        // Originally, the mCreator only contains a XY-plane & Z-axis
-        mCreator = Primitives.getCube(200);
-        mCreator.setAdditionalColor(20, 20, 20);
-        mCreator.setTransparency(2);
-        mCreator.strip();
-        mCreator.build();
+        if (MainActivity.mActivity == null) {
+            mWorld = new World();
+            mWorld.setAmbientLight(50, 50, 50);
 
-        // Step 1: add the XY-plane
-        mCoordinate = Primitives.getPlane(1, 400);
-        mCoordinate.setAdditionalColor(20, 20, 20);
-        mCoordinate.setOrigin(new SimpleVector(0, 0, 0));
-        mCoordinate.setTransparency(2);
-        mCoordinate.strip();
-        mCoordinate.build();
-        mCreator.addChild(mCoordinate);
-        mWorld.addObject(mCoordinate);
-        // Step 2: add the Z-axis
-        SimpleVector[] linePoints = new SimpleVector[2];
-        linePoints[0] = new SimpleVector(0, 0, 0);
-        linePoints[1] = new SimpleVector(0, 0, -100);
-        mZAxis = new Polyline(linePoints, new RGBColor(255, 200, 20));
-        mZAxis.setWidth(2);
-        mZAxis.setParent(mCreator);
-        mCoordinate = new Object3D(mCreator);
-        // Step 3: Add them to the world
-        mWorld.addObject(mCreator);
-        mWorld.addPolyline(mZAxis);
+            // Originally, the mCreator only contains a XY-plane & Z-axis
+            mCreator = Primitives.getCube(200);
+            mCreator.setAdditionalColor(20, 20, 20);
+            mCreator.setTransparency(2);
+            mCreator.strip();
+            mCreator.build();
 
-        mCamera = mWorld.getCamera();
-        mCamera.moveCamera(Camera.CAMERA_MOVEOUT, 100);
+            // Step 1: add the XY-plane
+            mCoordinate = Primitives.getPlane(1, 400);
+            mCoordinate.setAdditionalColor(120, 120, 120);
+            mCoordinate.setOrigin(new SimpleVector(0, 0, 0));
+            mCoordinate.setTransparency(2);
+            mCoordinate.setTexture("indoor map");
+            mCoordinate.strip();
+            mCoordinate.build();
+            mCreator.addChild(mCoordinate);
+            mWorld.addObject(mCoordinate);
+            // Step 2: add the Z-axis
+            SimpleVector[] linePoints = new SimpleVector[2];
+            linePoints[0] = new SimpleVector(0, 0, 0);
+            linePoints[1] = new SimpleVector(0, 0, -100);
+            mZAxis = new Polyline(linePoints, new RGBColor(255, 200, 20));
+            mZAxis.setWidth(2);
+            mZAxis.setParent(mCreator);
+            mCoordinate = new Object3D(mCreator);
+            // Step 3: Add them to the world
+            mWorld.addObject(mCreator);
+            mWorld.addPolyline(mZAxis);
+
+            mCamera = mWorld.getCamera();
+            mCamera.moveCamera(Camera.CAMERA_MOVEOUT, 100);
 //        mCamera.moveCamera(Camera.CAMERA_MOVEUP, -200);
-        mCamera.lookAt(mCreator.getTransformedCenter());
-        //mCamera.rotateCameraX(-45);
+            mCamera.lookAt(mCreator.getTransformedCenter());
+            //mCamera.rotateCameraX(-45);
 
-        mSun = new Light(mWorld);
-        mSunBack = new Light(mWorld);
-        mSun.setIntensity(50, 50, 50);
-        mSunBack.setIntensity(50, 50, 50);
-        SimpleVector sv = new SimpleVector();
-        sv.set(mCreator.getTransformedCenter());
-        sv.y -= 300;
-        sv.z -= 300;
-        mSun.setPosition(sv);
-        sv.set(mCreator.getTransformedCenter());
-        sv.y += 300;
-        sv.z += 300;
-        mSunBack.setPosition(sv);
-        // Optimize the memory
-        MemoryHelper.compact();
-
+            mSun = new Light(mWorld);
+            mSunBack = new Light(mWorld);
+            mSun.setIntensity(50, 50, 50);
+            mSunBack.setIntensity(50, 50, 50);
+            SimpleVector sv = new SimpleVector();
+            sv.set(mCreator.getTransformedCenter());
+            sv.y -= 300;
+            sv.z -= 300;
+            mSun.setPosition(sv);
+            sv.set(mCreator.getTransformedCenter());
+            sv.y += 300;
+            sv.z += 300;
+            mSunBack.setPosition(sv);
+            // Optimize the memory
+            MemoryHelper.compact();
+        }
     }
 
     @Override
@@ -314,6 +323,7 @@ public class MyRenderer implements GLSurfaceView.Renderer {
             return null;
         }
     }
+
     // </editor-fold>
 
 }

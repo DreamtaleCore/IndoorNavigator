@@ -26,7 +26,6 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -55,7 +54,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dreamtale.indoornavigator.CppUtils.Eigen;
 import com.example.dreamtale.indoornavigator.DebugUtils.DebugDataWriter;
 import com.example.dreamtale.indoornavigator.ImgProcLayer.ImageSync;
 import com.example.dreamtale.indoornavigator.ImgProcLayer.MyViewFlipper;
@@ -77,6 +75,9 @@ import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzoneShare;
 import com.tencent.open.utils.ThreadManager;
 import com.tencent.tauth.Tencent;
+import com.threed.jpct.Texture;
+import com.threed.jpct.TextureManager;
+import com.threed.jpct.util.BitmapHelper;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
@@ -102,15 +103,19 @@ public class MainActivity extends AppCompatActivity
 
     // <editor-fold desc="private parameters declarations BLOCK">
     private Context mContext = this;
-    private Activity mActivity = this;
+    public static Activity mActivity = null;
     MySurfaceView mMySurfaceView = null;
     // </editor-fold>
 
     // <editor-fold desc="Maintain main activity BLOCK">
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        if (mActivity != null) {
+            copy(mActivity);
+        }
         super.onCreate(savedInstanceState);
+        generateTexture();
+
         setContentView(R.layout.activity_main);
 
         initInteractionWithUi();
@@ -130,11 +135,17 @@ public class MainActivity extends AppCompatActivity
         // pause the actions about sensors
         mSensorManager.unregisterListener(mSensorEventListener);
         mIsFirstIn = true;
+        if (mActivity == null) {
+            mActivity = this;
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onResume() {
+        if (mActivity != null) {
+            copy(mActivity);
+        }
         super.onResume();
         mMySurfaceView.onResume();
         activeCamera();
@@ -1837,6 +1848,9 @@ public class MainActivity extends AppCompatActivity
     private void sendToQQ() {
         mParams = generateShareParams(true);
 
+        if (mActivity == null) {
+            mActivity = this;
+        }
         // Share operations must realized in the main thread
         ThreadManager.getMainHandler().post(new Runnable() {
             @Override
@@ -1849,6 +1863,9 @@ public class MainActivity extends AppCompatActivity
     private void shareToQQZone() {
         mParams = generateShareParams(false);
 
+        if (mActivity == null) {
+            mActivity = this;
+        }
         // Share operations must realized in the main thread
         ThreadManager.getMainHandler().post(new Runnable() {
             @Override
@@ -1868,7 +1885,20 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
+
     // </editor-fold>
+
+    // <editor-fold desc="Data Visible">
+    void generateTexture() {
+        Texture texture = new Texture(BitmapHelper.rescale(
+                BitmapHelper.convert(getDrawable(
+                        R.drawable.center_building_map)), 1024, 1024));
+
+        TextureManager.getInstance().addTexture("indoor map", texture);
+    }
+
+    // </editor-fold>
+
 
     // <editor-fold desc="Test cpp BLOCK">
 
