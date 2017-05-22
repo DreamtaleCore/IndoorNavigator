@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    // <editor-fold desc="private parameters declarations BLOCK">
+    // <editor-fold desc="Private parameters declarations BLOCK">
     private Context mContext = this;
     public static Activity mActivity = null;
     MySurfaceView mMySurfaceView = null;
@@ -135,35 +135,41 @@ public class MainActivity extends AppCompatActivity
         // pause the actions about sensors
         mSensorManager.unregisterListener(mSensorEventListener);
         mIsFirstIn = true;
-        if (mActivity == null) {
-            mActivity = this;
-        }
+
+        // record the scene
+        mActivity = this;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onResume() {
+
+        super.onResume();
+        mMySurfaceView.onResume();
+        initAndSetupAllSensors();
+        activeCamera();
+
+        if (mActivity == null) {
+
+            // Check OpenCV weather load successfully
+            if (!OpenCVLoader.initDebug()) {
+                Toast.makeText(this, "Internal OpenCV lib not found",
+                        Toast.LENGTH_SHORT).show();
+                OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_2_0, this,
+                        mImageSync.loaderCallback);
+            } else {
+                Toast.makeText(this, "OpenCV lib found inside the package, using it",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            // Like onCreate, reopen the servers of sensors
+            mIsFirstIn = true;
+        }
+
+        // resume the scene
         if (mActivity != null) {
             copy(mActivity);
         }
-        super.onResume();
-        mMySurfaceView.onResume();
-        activeCamera();
-
-        // Check OpenCV weather load successfully
-        if(!OpenCVLoader.initDebug()) {
-            Toast.makeText(this, "Internal OpenCV lib not found",
-                    Toast.LENGTH_SHORT).show();
-            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_2_0, this,
-                    mImageSync.loaderCallback);
-        } else {
-            Toast.makeText(this, "OpenCV lib found inside the package, using it",
-                    Toast.LENGTH_SHORT).show();
-        }
-
-        // Like onCreate, reopen the servers of sensors
-        mIsFirstIn = true;
-        initAndSetupAllSensors();
     }
 
     public void copy(Object src) {
@@ -180,8 +186,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         onActivityShareResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
     // </editor-fold>
 
